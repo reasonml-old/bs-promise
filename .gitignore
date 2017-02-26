@@ -1,22 +1,6 @@
 *~
-node_modules
-*.annot
-*.cmi
-*.cmj
-*.log
-*.d
-.bsbuild
-.bsdeps
-.ninja_deps
-.ninja_log
-*.mlast
-*.mliast
-.merlin
-bs/
-ocaml/
-
 *.cm*
+*.log
+.merlin
 /node_modules*
 /lib/
-.merlin
-build.ninja # we should not check in since it is OS dependent 
