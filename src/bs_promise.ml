@@ -23,32 +23,32 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA. *)
 
 
-(* 'res - type the promise will be resolved with
-   'rej - type the promise will be rejected with *)
-type ('res, 'rej) t
+(* 'a - type the promise will be resolved with
+   'e - type the promise will be rejected with *)
+type (+'a, +'e) t
 
-external make : (('res -> unit) -> ('rej -> unit) -> unit) -> ('res, 'rej) t = "Promise" [@@bs.new]
-external create : (('res -> unit [@bs]) -> ('rej -> unit [@bs]) -> unit [@bs]) -> ('res, 'rej) t = "Promise" [@@bs.new]
+external make : (('a -> unit) -> ('e -> unit) -> unit) -> ('a, 'e) t = "Promise" [@@bs.new]
+external create : (('a -> unit [@bs]) -> ('e -> unit [@bs]) -> unit [@bs]) -> ('a, 'e) t = "Promise" [@@bs.new]
 [@@ocaml.deprecated "Please use `make` instead"]
 
-external resolve : 'res -> ('res, 'a) t = "Promise.resolve" [@@bs.val]
-external reject : 'rej -> ('a, 'rej) t = "Promise.reject" [@@bs.val]
-external all : ('res, 'rej) t array -> ('res array, 'rej) t = "Promise.all" [@@bs.val]
-external race : ('res, 'rej) t array -> ('res, 'rej) t = "Promise.race" [@@bs.val]
+external resolve : 'a -> ('a, 'e) t = "Promise.resolve" [@@bs.val]
+external reject : 'e -> ('a, 'e) t = "Promise.reject" [@@bs.val]
+external all : ('a, 'e) t array -> ('a array, 'e) t = "Promise.all" [@@bs.val]
+external race : ('a, 'e) t array -> ('a, 'e) t = "Promise.race" [@@bs.val]
 
-external then_ : ('res -> 'a) -> ('a, 'b) t = "then" [@@bs.send.pipe: ('res, 'rej') t]
-external thenValue : ('res, 'rej) t -> ('res -> 'a [@bs]) -> ('a, 'b) t = "then" [@@bs.send]
+external then_ : ('a -> 'b) -> ('b, 'f) t = "then" [@@bs.send.pipe: ('a, 'e) t]
+external thenValue : ('a, 'e) t -> ('a -> 'b [@bs]) -> ('b, 'f) t = "then" [@@bs.send]
 [@@ocaml.deprecated "Please use `then_` instead"]
-external (>>|): ('res, 'rej) t -> ('res -> 'a [@bs]) -> ('a, 'b) t = "then" [@@bs.send]
+external (>>|): ('a, 'e) t -> ('a -> 'b [@bs]) -> ('b, 'f) t = "then" [@@bs.send]
 [@@ocaml.deprecated "Obscure operators are discouraged. Please use `then_` instead"]
-external andThen : ('res -> ('a, 'b) t) -> ('a, 'b) t = "then" [@@bs.send.pipe: ('res, 'rej) t]
-external (>>=) : ('res, 'rej) t -> ('res -> ('a, 'b) t [@bs]) -> ('a, 'b) t = "then" [@@bs.send]
+external andThen : ('a -> ('b, 'f) t) -> ('b, 'f) t = "then" [@@bs.send.pipe: ('a, 'e) t]
+external (>>=) : ('a, 'e) t -> ('a -> ('b, 'f) t [@bs]) -> ('b, 'f) t = "then" [@@bs.send]
 [@@ocaml.deprecated "Obscure operators are discouraged. Please use `andThen` instead"]
-external thenWithError : ('res, 'rej) t -> ('res -> 'a [@bs]) -> ('rej -> 'b [@bs]) -> ('a, 'b) t = "then" [@@bs.send]
+external thenWithError : ('a, 'e) t -> ('a -> 'b [@bs]) -> ('e -> 'f [@bs]) -> ('b, 'f) t = "then" [@@bs.send]
 [@@ocaml.deprecated "Obscure operators are discouraged. Please use a combination of `then_` and `catch` instead"]
 
-external catch : ('rej -> unit) -> ('a, 'b) t = "catch" [@@bs.send.pipe: ('res, 'rej) t]
-external (>>?) : ('res, 'rej) t -> ('rej -> 'a [@bs]) -> ('a, 'b) t = "catch" [@@bs.send]
+external catch : ('e -> unit) -> ('b, 'f) t = "catch" [@@bs.send.pipe: ('a, 'e) t]
+external (>>?) : ('a, 'e) t -> ('e -> 'b [@bs]) -> ('b, 'f) t = "catch" [@@bs.send]
 [@@ocaml.deprecated "Obscure operators are discouraged. Please use `or_` instead"]
-external or_ : ('rej -> 'a) -> ('a, 'b) t = "catch" [@@bs.send.pipe: ('res, 'rej) t]
-external orElse : ('rej -> ('a, 'b) t) -> ('a, 'b) t = "catch" [@@bs.send.pipe: ('res, 'rej) t]
+external or_ : ('e -> 'b) -> ('b, 'f) t = "catch" [@@bs.send.pipe: ('a, 'e) t]
+external orElse : ('e -> ('b, 'f) t) -> ('b, 'f) t = "catch" [@@bs.send.pipe: ('a, 'e) t]
