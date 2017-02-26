@@ -15,4 +15,8 @@ node_modules
 bs/
 ocaml/
 
+*.cm*
+/node_modules*
+/lib/
+.merlin
 build.ninja # we should not check in since it is OS dependent 

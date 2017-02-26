@@ -1,10 +1,10 @@
-# bucklescript-addons
-Addons modules for the [BuckleScript](https://github.com/bloomberg/bucklescript) OCaml->Javascript translator
+### Bindings to promises for [BuckleScript](https://github.com/bloomberg/bucklescript).
 
+### Installation
+npm: `npm install bs-promise`
 
-This repo provide users some [examples](./examples) showing how to use
-BuckleScript and some basic [bindings](./bindings)
+### Usage
+See usage examples in `test/`
 
-For documentation of BuckleScript, see
-http://bloomberg.github.io/bucklescript/
-
+### Test
+Run `npm test`
