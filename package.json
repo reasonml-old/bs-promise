@@ -1,6 +1,6 @@
 {
   "name": "bs-promise",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Bindings to promises for BuckleScript",
   "scripts": {
     "postinstall": "bsb",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bloomberg/bucklescript-addons.git"
+    "url": "git+https://github.com/BuckleTypes/bs-promise.git"
   },
   "keywords": [
     "ocaml",
@@ -17,12 +17,12 @@
     "promise",
     "promises"
   ],
-  "author": "Abhir Mathur",
-  "license": "ISC",
+  "author": "Abhir Mathur et al.",
+  "license": "LGPL3",
   "bugs": {
-    "url": "https://github.com/bloomberg/bucklescript-addons/issues"
+    "url": "https://github.com/BuckleTypes/bs-promise/issues"
   },
-  "homepage": "https://github.com/bloomberg/bucklescript-addons#readme",
+  "homepage": "https://github.com/BuckleTypes/bs-promise#readme",
   "dependencies": {
     "bs-platform" : "^1.3.3"
   }
