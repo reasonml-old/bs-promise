@@ -1,3 +1,0 @@
-
-
-Js.log "hello world"
