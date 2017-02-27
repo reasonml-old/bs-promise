@@ -22,7 +22,7 @@
     "url": "https://github.com/BuckleTypes/bs-promise/issues"
   },
   "homepage": "https://github.com/BuckleTypes/bs-promise#readme",
-  "dependencies": {
+  "devDependencies": {
     "bs-platform" : "^1.3.3"
   }
 }
