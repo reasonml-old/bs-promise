@@ -4,7 +4,7 @@
   "description": "Bindings to promises for BuckleScript",
   "scripts": {
     "start": "bsb -make-world -w",
-    "test": "node ./scripts/test.js"
+    "test": "bsb -make-world && node lib/js/test/bs_promise_test.js"
   },
   "repository": {
     "type": "git",
@@ -23,6 +23,6 @@
   },
   "homepage": "https://github.com/BuckleTypes/bs-promise#readme",
   "devDependencies": {
-    "bs-platform" : "^1.3.3"
+    "bs-platform" : "^1.4.3"
   }
 }
