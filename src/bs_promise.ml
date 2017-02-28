@@ -28,8 +28,6 @@
 type (+'a, +'e) t
 
 external make : (('a -> unit) -> ('e -> unit) -> unit) -> ('a, 'e) t = "Promise" [@@bs.new]
-external create : (('a -> unit [@bs]) -> ('e -> unit [@bs]) -> unit [@bs]) -> ('a, 'e) t = "Promise" [@@bs.new]
-[@@ocaml.deprecated "Please use `make` instead"]
 
 external resolve : 'a -> ('a, 'e) t = "Promise.resolve" [@@bs.val]
 external reject : 'e -> ('a, 'e) t = "Promise.reject" [@@bs.val]
@@ -37,15 +35,11 @@ external all : ('a, 'e) t array -> ('a array, 'e) t = "Promise.all" [@@bs.val]
 external race : ('a, 'e) t array -> ('a, 'e) t = "Promise.race" [@@bs.val]
 
 external then_ : ('a -> 'b) -> ('b, 'f) t = "then" [@@bs.send.pipe: ('a, 'e) t]
-external thenValue : ('a, 'e) t -> ('a -> 'b [@bs]) -> ('b, 'f) t = "then" [@@bs.send]
-[@@ocaml.deprecated "Please use `then_` instead"]
 external (>>|): ('a, 'e) t -> ('a -> 'b [@bs]) -> ('b, 'f) t = "then" [@@bs.send]
 [@@ocaml.deprecated "Obscure operators are discouraged. Please use `then_` instead"]
 external andThen : ('a -> ('b, 'f) t) -> ('b, 'f) t = "then" [@@bs.send.pipe: ('a, 'e) t]
 external (>>=) : ('a, 'e) t -> ('a -> ('b, 'f) t [@bs]) -> ('b, 'f) t = "then" [@@bs.send]
 [@@ocaml.deprecated "Obscure operators are discouraged. Please use `andThen` instead"]
-external thenWithError : ('a, 'e) t -> ('a -> 'b [@bs]) -> ('e -> 'f [@bs]) -> ('b, 'f) t = "then" [@@bs.send]
-[@@ocaml.deprecated "Obscure operators are discouraged. Please use a combination of `then_` and `catch` instead"]
 
 external catch : ('e -> unit) -> ('b, 'f) t = "catch" [@@bs.send.pipe: ('a, 'e) t]
 external (>>?) : ('a, 'e) t -> ('e -> 'b [@bs]) -> ('b, 'f) t = "catch" [@@bs.send]
