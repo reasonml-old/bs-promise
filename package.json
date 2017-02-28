@@ -17,7 +17,7 @@
     "promises"
   ],
   "author": "Abhir Mathur et al.",
-  "license": "LGPL3",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/BuckleTypes/bs-promise/issues"
   },
