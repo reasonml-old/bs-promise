@@ -4,7 +4,4 @@
 npm: `npm install bs-promise`
 
 ### Usage
-See usage examples in `test/`
-
-### Test
-Run `npm test`
+See usage examples in `test/`. The source is a [single file](https://github.com/BuckleTypes/bs-promise/blob/master/src/bs_promise.ml)!
