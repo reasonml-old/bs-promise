@@ -1,11 +1,10 @@
 {
   "name": "bs-promise",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Bindings to promises for BuckleScript",
   "scripts": {
-    "postinstall": "bsb",
     "start": "bsb -make-world -w",
-    "test": "node ./scripts/test.js"
+    "test": "bsb -make-world && node lib/js/test/bs_promise_test.js"
   },
   "repository": {
     "type": "git",
@@ -18,12 +17,12 @@
     "promises"
   ],
   "author": "Abhir Mathur et al.",
-  "license": "LGPL3",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/BuckleTypes/bs-promise/issues"
   },
   "homepage": "https://github.com/BuckleTypes/bs-promise#readme",
-  "dependencies": {
+  "devDependencies": {
     "bs-platform" : "bloomberg/bucklescript"
   }
 }
