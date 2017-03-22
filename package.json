@@ -24,6 +24,6 @@
   },
   "homepage": "https://github.com/BuckleTypes/bs-promise#readme",
   "dependencies": {
-    "bs-platform" : "^1.3.3"
+    "bs-platform" : "bloomberg/bucklescript"
   }
 }

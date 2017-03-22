@@ -25,7 +25,7 @@
 
 (* 'a - type the promise will be resolved with
    'e - type the promise will be rejected with *)
-type (+'a, +'e) t
+type (+'a, +'e) t = ('a, 'e) Js.promise
 
 external make : (('a -> unit) -> ('e -> unit) -> unit) -> ('a, 'e) t = "Promise" [@@bs.new]
 external create : (('a -> unit [@bs]) -> ('e -> unit [@bs]) -> unit [@bs]) -> ('a, 'e) t = "Promise" [@@bs.new]
