@@ -1,3 +1,11 @@
+(* Example usage:
+
+   let prom1 = PromiseRe.make (fun resolve reject => resolve "hello");
+
+   let prom2 = prom1
+     |> PromiseRe.then_ (fun res => {Js.log res; 123})
+     |> PromiseRe.then_ (fun res => print_int res); *)
+
 (* 'a - type the promise will be resolved with
    'e - type the promise will be rejected with *)
 type (+'a, +'e) t = ('a, 'e) Js.promise

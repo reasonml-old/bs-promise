@@ -4,4 +4,24 @@
 npm: `npm install bs-promise`
 
 ### Usage
-See usage examples in [`test/`](https://github.com/BuckleTypes/bs-promise/blob/master/test/bs_promise_test.ml). The source is a [single file](https://github.com/BuckleTypes/bs-promise/blob/master/src/bs_promise.ml)!
+
+[Reason](http://facebook.github.io/reason/) syntax:
+
+```reason
+let prom1 = PromiseRe.make (fun resolve reject => resolve "hello");
+
+let prom2 = prom1
+  |> PromiseRe.then_ (fun res => {Js.log res; 123})
+  |> PromiseRe.then_ (fun res => print_int res);
+```
+
+OCaml syntax:
+
+```ocaml
+let prom1 = PromiseRe.make (fun resolve reject -> resolve "hello")
+let prom2 = prom1 
+  |> PromiseRe.then_ (fun res -> Js.log res; 123)
+  |> PromiseRe.then_ (fun res -> print_int res)
+```
+
+See more usage examples in [`test/`](https://github.com/BuckleTypes/bs-promise/blob/master/test/bs_promise_test.ml). The source is a [single file](https://github.com/BuckleTypes/bs-promise/blob/master/src/bs_promise.ml)!
