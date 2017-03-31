@@ -1,4 +1,4 @@
-### Bindings to promises for [BuckleScript](https://github.com/BuckleTypes/bs-promise).
+### Official bindings to promises for [BuckleScript](https://github.com/BuckleTypes/bs-promise).
 
 ### Installation
 npm: `npm install bs-promise`
