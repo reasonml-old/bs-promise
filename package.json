@@ -1,6 +1,6 @@
 {
   "name": "bs-promise",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Bindings to promises for BuckleScript",
   "scripts": {
     "start": "bsb -make-world -w",
@@ -23,6 +23,6 @@
   },
   "homepage": "https://github.com/BuckleTypes/bs-promise#readme",
   "devDependencies": {
-    "bs-platform" : "bloomberg/bucklescript"
+    "bs-platform": "bloomberg/bucklescript"
   }
 }
