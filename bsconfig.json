@@ -5,6 +5,6 @@
     "public": "all"
   }, {
     "dir": "test",
-    "dev": true
+    "type": "dev"
   }]
 }
